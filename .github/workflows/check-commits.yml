@@ -12,7 +12,7 @@ jobs:
           fetch-tags: false # This should negate the need for fetch-depth 0 but it seems both are required
 
       - name: Check for conventional commit
-        uses: cocogitto/cocogitto-action@v3.5  #Use this version on a temp basis as cog 6.1.0 has a known bug: https://github.com/cocogitto/cocogitto/issues/382
+        uses: cocogitto/cocogitto-action@v3.6 #Use this version on a temp basis as cog 6.1.0 has a known bug: https://github.com/cocogitto/cocogitto/issues/382
         with:
           check-latest-tag-only: true
           check: false
