@@ -1,0 +1,17 @@
+name: Check comments follow conventional commit
+on: pull_request
+
+jobs:
+  check_conventional_commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled so we can bump on previous tags
+          fetch-tags: true # This should negate the need for fetch-depth 0 but it seems both are required
+
+      - name: Check for conventional commit
+        uses: cocogitto/cocogitto-action@v3.6  #Use this version on a temp basis as cog 6.1.0 has a known bug: https://github.com/cocogitto/cocogitto/issues/382
+        with:
+          check-latest-tag-only: true
