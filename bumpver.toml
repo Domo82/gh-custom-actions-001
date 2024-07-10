@@ -8,7 +8,7 @@ push = true
 
 [bumpver.file_patterns]
 "README.md" = [
-    "current version is {version}",
+    "current version is {version_pattern}",
 ]
 "bumpver.toml" = [
     'current_version = "{version}"',
