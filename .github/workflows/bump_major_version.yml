@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@master
       - name: run git commands
         run: |
-          git config --global --add safe.directory /github/workspace"
+          git config --global --add safe.directory /github/workspace
       - name: Bump version and push tag
         uses: darioblanco/bump-semver@v1.0.0
         with:
