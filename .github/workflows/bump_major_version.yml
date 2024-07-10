@@ -3,17 +3,10 @@ on:
   push:
   workflow_dispatch:
 jobs:
-  git_config:
-    runs-on: ubuntu-latest
-    steps:
-      - name: run git commands
-        run: |
-          git config --global --add safe.directory /github/workspace
   bump_major_version:
-    needs: git_config
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
       - name: run git commands
         run: |
           git config --global --add safe.directory /github/workspace
