@@ -8,13 +8,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: 'Bump version'
+        uses: gabeduke/bumpver-action@v2.0.0
         with:
-          fetch-depth: 0
-      - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v1.2.0
-        with:
-          versionSpec: '5.12.0'
-      - name: Determine Version
-        uses: gittools/actions/gitversion/execute@v1.2.0
-# Add a silly comment line.
-
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
