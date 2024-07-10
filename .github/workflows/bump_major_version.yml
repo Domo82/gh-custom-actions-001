@@ -7,12 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: run git commands
-        run: |
-          git config --global --add safe.directory /github/workspace
+      - name: Fix git safe.directory in container
+        run: mkdir -p /home/runner/work/_temp/_github_home && printf "[safe]\n\tdirectory = /github/workspace" > /home/runner/work/_temp/_github_home/.gitconfig
       - name: Bump version and push tag
         uses: darioblanco/bump-semver@v1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           defaultBump: major
-          prefix: mygroup/
+          prefix: v
