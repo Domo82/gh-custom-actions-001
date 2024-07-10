@@ -6,10 +6,19 @@ jobs:
   bump_major_version:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Get next version
         uses: reecetech/version-increment@2024.4.3
         id: version
         with:
-          use_api: true
           scheme: semver
-          increment: major
+          increment: patch
+
+      - name: Build image
+        uses: docker/build-push-action@v2
+        with:
+          push: false
+          tags: "example/application:${{ steps.version.outputs.version }}"
+          context: .
