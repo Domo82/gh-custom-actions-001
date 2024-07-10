@@ -7,6 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: harvidsen/bumpver-action
+      - uses: harvidsen/bumpver-action@v1.0
         with:
           args: --major --dry
