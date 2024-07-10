@@ -6,18 +6,10 @@ jobs:
   bump_major_version:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      #- name: Get and cache dependencies
-      #  uses: ./actions/cached-deps
-      #  id: cached-deps
-      #  with:
-      #    caching: true
-
-      - name: Bump major version
-        uses: reecetech/version-increment@2024.4.3
-        id: version
+      - uses: actions/checkout@master
+      - name: Bump version and push tag
+        uses: darioblanco/bump-semver@v1.0.0
         with:
-          scheme: semver
-          increment: major
+          token: ${{ secrets.GITHUB_TOKEN }}
+          defaultBump: major
+          prefix: mygroup/
