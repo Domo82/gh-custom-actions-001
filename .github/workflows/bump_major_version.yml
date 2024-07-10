@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
 jobs:
   bump_major_version:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
