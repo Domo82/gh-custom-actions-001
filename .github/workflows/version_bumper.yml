@@ -15,19 +15,5 @@ jobs:
       - name: Bump Versions
         uses: michmich112/version-bumper@master
         with:
-          scheme: semantic
-          username: Domo82
-          email: Domo@82.id
-          version-file: "./package.json"
-          files: >
-            [
-              "./package-lock.json"
-            ] 
-          rules: >
-            [{
-              "trigger":"manual",
-              "bump":"major",
-              "tag": true,
-              "reset":["minor","build"]
-            }]'
+          options-file: './examples/example-options-full.json'
           github-token: ${{ secrets.GITHUB_TOKEN }}
