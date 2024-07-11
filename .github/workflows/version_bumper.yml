@@ -28,7 +28,7 @@ jobs:
       - name: Bump Versions
         uses: michmich112/version-bumper@master
         with:
-          scheme: semantic
+          scheme: org_semantic
           username: EI
           email: EI@test.id
           version-file: "./version.json"
