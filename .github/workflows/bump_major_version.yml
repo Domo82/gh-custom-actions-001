@@ -2,6 +2,11 @@ name: 'Bump major version'
 on:
   push:
   workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Tick box if you want to bump the major version +1'
+        required: true
+        type: boolean
 jobs:
   bump_major_version:
     permissions: write-all
