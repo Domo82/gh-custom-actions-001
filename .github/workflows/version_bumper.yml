@@ -11,6 +11,7 @@ on:
           - bump-and-tag-major
 jobs:
   major-bump:
+    if: github.event.inputs['Select a job to run'] == 'bump-major'
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
@@ -28,6 +29,7 @@ jobs:
           options-file: './bump_options.json'
           github-token: ${{ secrets.GITHUB_TOKEN }}
   major-bump-and-tag:
+    if: github.event.inputs['Select a job to run'] == 'bump-and-tag-major'
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
