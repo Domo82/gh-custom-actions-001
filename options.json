@@ -1,0 +1,18 @@
+{
+    "scheme": "semantic",
+    "username": "Domo82",
+    "email": "Domo@82.id",
+    "schemeDefinition": "major.minor[.build]",
+    "versionFile": "./package.json",
+    "rules": [
+      {
+        "trigger": "manual",
+        "bump": "major",
+        "branch": "release",
+        "reset": [
+          "minor",
+          "build"
+        ]
+      }
+    ]
+  }
