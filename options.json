@@ -9,7 +9,7 @@
       {
         "trigger": "manual",
         "bump": "major",
-        "branch": "release",
+        "branch": "main",
         "reset": [
           "minor",
           "build"
