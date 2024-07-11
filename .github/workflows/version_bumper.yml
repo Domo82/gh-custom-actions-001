@@ -7,13 +7,13 @@ on:
         required: true
         type: choice
         options:
-          - bump-major
-          - bump-and-tag-major
+          - major-bump
+          - major-bump-and-tag
           - major-bump-and-tag-beta
           - major-bump-and-tag-release-candidate
 jobs:
   major-bump:
-    if: github.event.inputs['Select a job to run'] == 'bump-major'
+    if: github.event.inputs['Select a job to run'] == 'major-bump'
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
@@ -28,25 +28,10 @@ jobs:
       - name: Bump Versions
         uses: michmich112/version-bumper@master
         with:
-          scheme: org_semantic
-          username: EI
-          email: EI@test.id
-          version-file: "./version.json"
-          files: >
-            [
-              "./version.json"
-            ] 
-          rules: >
-            [{
-              "trigger":"manual",
-              "branch":"main",
-              "bump":"major",
-              "tag": false,
-              "reset":["minor","build"]
-            }]'
+          options-file: './bump_and_tag_options.json'
           github-token: ${{ secrets.GITHUB_TOKEN }}
   major-bump-and-tag:
-    if: github.event.inputs['Select a job to run'] == 'bump-and-tag-major'
+    if: github.event.inputs['Select a job to run'] == 'major-bump-and-tag'
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
