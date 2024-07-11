@@ -13,9 +13,7 @@ on:
           - patch
 jobs:
   bump-version:
-      permissions:
-          pull-requests: write
-          actions: write
+      permissions: write-all
       runs-on: ubuntu-latest
       steps:
         - name: Checkout code
