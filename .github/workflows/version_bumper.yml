@@ -28,7 +28,7 @@ jobs:
       - name: Bump Versions
         uses: michmich112/version-bumper@master
         with:
-          options-file: './bump_and_tag_options.json'
+          options-file: './bump_options.json'
           github-token: ${{ secrets.GITHUB_TOKEN }}
   major-bump-and-tag:
     if: github.event.inputs['Select a job to run'] == 'major-bump-and-tag'
@@ -64,7 +64,7 @@ jobs:
       - name: Bump Versions
         uses: michmich112/version-bumper@master
         with:
-          options-file: './bump_and_tag_options.json'
+          options-file: './beta_options.json'
           github-token: ${{ secrets.GITHUB_TOKEN }}
   major-bump-and-tag-release-candidate:
     if: github.event.inputs['Select a job to run'] == 'major-bump-and-tag-release-candidate'
@@ -82,5 +82,5 @@ jobs:
       - name: Bump Versions
         uses: michmich112/version-bumper@master
         with:
-          options-file: './bump_and_tag_options.json'
+          options-file: './release_candidate_options.json'
           github-token: ${{ secrets.GITHUB_TOKEN }}
