@@ -1,4 +1,4 @@
-name: 'Bump major version'
+name: 'get tag version'
 on: workflow_dispatch
 jobs:
   github-example-tags:
