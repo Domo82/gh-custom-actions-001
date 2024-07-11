@@ -1,7 +1,16 @@
-name: 'get tag version'
-on: workflow_dispatch
+name: 'Bump major version'
+on: 
+  workflow_dispatch:
+    inputs:
+      Select a job to run:
+        description: 'Select a job to run'
+        required: true
+        type: choice
+        options:
+          - bump-major
+          - bump-and-tag-major
 jobs:
-  github-example-tags:
+  major-bump:
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
@@ -16,5 +25,22 @@ jobs:
       - name: Bump Versions
         uses: michmich112/version-bumper@master
         with:
-          options-file: './options.json'
+          options-file: './bump_options.json'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+  major-bump-and-tag:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 12
+      - name: Install dependencies
+        run: npm install
+      - name: Bump Versions
+        uses: michmich112/version-bumper@master
+        with:
+          options-file: './bump_and_tag_options.json'
           github-token: ${{ secrets.GITHUB_TOKEN }}
