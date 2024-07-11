@@ -9,6 +9,8 @@ on:
         options:
           - bump-major
           - bump-and-tag-major
+          - major-bump-and-tag-beta
+          - major-bump-and-tag-release-candidate
 jobs:
   major-bump:
     if: github.event.inputs['Select a job to run'] == 'bump-major'
@@ -26,10 +28,61 @@ jobs:
       - name: Bump Versions
         uses: michmich112/version-bumper@master
         with:
-          options-file: './bump_options.json'
+          scheme: semantic
+          username: EI
+          email: EI@test.id
+          version-file: "./version.json"
+          files: >
+            [
+              "./version.json"
+            ] 
+          rules: >
+            [{
+              "trigger":"manual",
+              "branch":"main",
+              "bump":"major",
+              "tag": false,
+              "reset":["minor","build"]
+            }]'
           github-token: ${{ secrets.GITHUB_TOKEN }}
   major-bump-and-tag:
     if: github.event.inputs['Select a job to run'] == 'bump-and-tag-major'
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 12
+      - name: Install dependencies
+        run: npm install
+      - name: Bump Versions
+        uses: michmich112/version-bumper@master
+        with:
+          options-file: './bump_and_tag_options.json'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+  major-bump-and-tag-beta:
+    if: github.event.inputs['Select a job to run'] == 'major-bump-and-tag-beta'
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 12
+      - name: Install dependencies
+        run: npm install
+      - name: Bump Versions
+        uses: michmich112/version-bumper@master
+        with:
+          options-file: './bump_and_tag_options.json'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+  major-bump-and-tag-release-candidate:
+    if: github.event.inputs['Select a job to run'] == 'major-bump-and-tag-release-candidate'
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
