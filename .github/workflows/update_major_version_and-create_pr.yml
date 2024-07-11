@@ -28,12 +28,12 @@ jobs:
           id: update_version
           run: |
             echo "version=$(npm version ${{ github.event.inputs.version }} --no-git tag-version)" >> $GITHUB_OUTPUT
-            - name: Create pull request
-            id: create_pr
-            uses: peter-evans/create-pull-request@v5
-            with:
-              token: ${{ secrets.GITHUB_TOKEN }}
-              branch: release/${{ steps.update_version.outputs.version }}
-              title: "Release: ${{ steps.update_version.outputs.version }} Pull Request"
-              body: "This pull request contains the updated package.json with the new   	release version"
-              base: main
+        - name: Create pull request
+          id: create_pr
+          uses: peter-evans/create-pull-request@v5
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            branch: release/${{ steps.update_version.outputs.version }}
+            title: "Release: ${{ steps.update_version.outputs.version }} Pull Request"
+            body: "This pull request contains the updated package.json with the new   	release version"
+            base: main
