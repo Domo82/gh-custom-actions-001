@@ -4,6 +4,9 @@
     "email": "Domo@82.id",
     "schemeDefinition": "major.minor[.build]",
     "versionFile": "./package.json",
+    "files": ["./package.json", {
+      "path": "./package-lock.json"
+    }],
     "rules": [
       {
         "trigger": "manual",
