@@ -1,8 +1,8 @@
 {
-    "scheme": "semantic",
+    "scheme": "org_semantic",
     "username": "Domo82",
     "email": "Domo@82.id",
-    "schemeDefinition": "major.minor.build",
+    "schemeDefinition": "major.minor.build[.patch]",
     "versionFile": "./version.json",
     "files": ["./version.json"],
     "rules": [
@@ -10,7 +10,7 @@
         "trigger": "manual",
         "bump": "major",
         "branch": "main",
-        "prefix": "beta",
+        "suffix": "-beta",
         "tag": true,
         "reset": [
           "minor",
