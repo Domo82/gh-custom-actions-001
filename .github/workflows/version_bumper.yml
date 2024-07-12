@@ -12,6 +12,13 @@ on:
           - major-bump-and-tag-beta
           - major-bump-and-tag-release-candidate
 jobs:
+  github-example-tags:
+    runs-on: ubuntu-latest
+    steps:
+     - name: GitHub Tag Name example
+       run: |
+         echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
+         echo "Tag name from github.ref_name: ${{  github.ref_name }}"
   major-bump:
     if: github.event.inputs['Select a job to run'] == 'major-bump'
     permissions: write-all
