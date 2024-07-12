@@ -17,6 +17,14 @@ jobs:
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 12
+      - name: Install dependencies
+        run: npm install
       - name: get the latest tag
         run: |
           echo "latest_tag = $(git describe --tags --abbrev=0)" >> "$GITHUB_ENV"
@@ -28,14 +36,6 @@ jobs:
       - name: print version file content
         run: |
           echo cat ./versioning-rules/version.json
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 12
-      - name: Install dependencies
-        run: npm install
       - name: clean version file
         run: |
           sed -i 's/-beta//' ./versioning-rules/version.json
