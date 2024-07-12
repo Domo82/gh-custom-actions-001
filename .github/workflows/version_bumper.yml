@@ -11,20 +11,7 @@ on:
           - major-bump-and-tag
           - major-bump-and-tag-beta
           - major-bump-and-tag-release-candidate
-          - version-file-setup
 jobs:
-  version-file-setup:
-    if: github.event.inputs['Select a job to run'] == 'version-file-setup'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Create version file
-        run: |
-          git describe --tags --abbrev=0 > ./versioning-rules/version.json
-          echo "{\"version\": \"$latest_tag\"}" > ./versioning-rules/version.json
   major-bump:
     if: github.event.inputs['Select a job to run'] == 'major-bump'
     permissions: write-all
@@ -38,18 +25,6 @@ jobs:
           node-version: 12
       - name: Install dependencies
         run: npm install
-      - name: get the latest tag
-        run: |
-          echo rm -f ./versioning-rules/version.json
-          echo git describe --tags --abbrev=0 > ./versioning-rules/version.json
-      - name : update the version file
-        run: |
-          echo sed 's/^/{ "version": "}'
-          echo sed 's/$/" }/'
-          echo cat ./versioning-rules/version.json
-      - name: print version file content
-        run: |
-          echo cat ./versioning-rules/version.json
       - name: clean version file
         run: |
           sed -i 's/-beta//' ./versioning-rules/version.json
