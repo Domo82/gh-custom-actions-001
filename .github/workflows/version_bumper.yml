@@ -25,6 +25,10 @@ jobs:
           node-version: 12
       - name: Install dependencies
         run: npm install
+      - name: clean version file
+        run: |
+          sed -i 's/-beta//' myfile.txt
+          sed -i 's/-rc//' myfile.txt
       - name: Bump Versions
         uses: michmich112/version-bumper@master
         with:
