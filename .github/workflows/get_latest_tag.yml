@@ -18,7 +18,7 @@ jobs:
           cat test.json
       - name: update version file
         run: |
-          sed 's/^/{ "version": "/ ./test.json
+          sed 's/^/{ "version": "/' ./test.json
           sed 's/$/" } /' ./test.json
       - name: print tag
         run: |
