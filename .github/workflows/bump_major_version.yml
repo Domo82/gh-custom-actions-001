@@ -1,4 +1,4 @@
-name: 'Simple bump major version'
+name: 'Commit bump version 001'
 on:
   push:
   workflow_dispatch:
