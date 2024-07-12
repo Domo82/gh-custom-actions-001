@@ -22,4 +22,4 @@ jobs:
           fetch-depth: 0
       - name: Bump version
         run: |
-          echo cog-bump --major --pre "beta.1"
+          cog-bump --major --pre "beta.1"
