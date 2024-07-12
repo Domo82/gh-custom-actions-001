@@ -29,10 +29,10 @@ jobs:
         run: |
           sed -i 's/-beta//' ./versioning-rules/version.json
           sed -i 's/-rc//' ./versioning-rules/version.json
-      - name: Bump Versions
+      - name: Bump Major Version
         uses: michmich112/version-bumper@master
         with:
-          options-file: './versioning-rules/major-bumps/bump_options.json'
+          options-file: './versioning-rules/major-bumps/bump_only_options.json'
           github-token: ${{ secrets.GITHUB_TOKEN }}
   major-bump-and-tag:
     if: github.event.inputs['Select a job to run'] == 'major-bump-and-tag'
@@ -51,7 +51,7 @@ jobs:
         run: |
           sed -i 's/-beta//' ./versioning-rules/version.json
           sed -i 's/-rc//' ./versioning-rules/version.json
-      - name: Bump Versions
+      - name: Bump Major Version and Tag
         uses: michmich112/version-bumper@master
         with:
           options-file: './versioning-rules/major-bumps/bump_and_tag_options.json'
@@ -73,7 +73,7 @@ jobs:
         run: |
           sed -i 's/-beta//' ./versioning-rules/version.json
           sed -i 's/-rc//' ./versioning-rules/version.json
-      - name: Bump Versions
+      - name: Bump Major Version and Tag Beta
         uses: michmich112/version-bumper@master
         with:
           options-file: './versioning-rules/major-bumps/beta_options.json'
@@ -95,7 +95,7 @@ jobs:
         run: |
           sed -i 's/-beta//' ./versioning-rules/version.json
           sed -i 's/-rc//' ./versioning-rules/version.json
-      - name: Bump Versions
+      - name: Bump Major Version and Tag Release Candidate
         uses: michmich112/version-bumper@master
         with:
           options-file: './versioning-rules/major-bumps/release_candidate_options.json'
