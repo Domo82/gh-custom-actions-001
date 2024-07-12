@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: get the latest tag
         run: |
-          echo "latest_tag = $(git describe --tags --abbrev=0) >> "$GITHUB_ENV"
+          echo "latest_tag = $(git describe --tags --abbrev=0)" >> "$GITHUB_ENV"
       - name : update the version file
         run: |
           echo : > ./versioning-rules/version.json
