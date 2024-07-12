@@ -2,7 +2,7 @@
     "scheme": "org_semantic",
     "username": "Domo82",
     "email": "Domo@82.id",
-    "schemeDefinition": "major.minor.build[.patch]",
+    "schemeDefinition": "major.minor.build",
     "versionFile": "./version.json",
     "files": ["./version.json"],
     "rules": [
