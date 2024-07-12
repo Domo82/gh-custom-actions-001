@@ -1,4 +1,4 @@
-name: 'Commit and bump'
+name: '#major Bump'
 on: workflow_dispatch
 jobs:
   commit_and_bump:
@@ -10,8 +10,6 @@ jobs:
       - name: 'Add and commit'
         uses: EndBug/add-and-commit@v9
         with:
-          commit: --allow-empty
-          message: '#major'
-          push: false
-          tag: true
-          tag_push: true
+          commit: --allow-empty -m "#major Bump major version"
+          push: true
+          tag_push: '--force'
