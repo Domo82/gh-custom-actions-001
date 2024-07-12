@@ -13,3 +13,4 @@ jobs:
           commit: --allow-empty
           message: '#major'
           push: false
+          tag: true
