@@ -12,6 +12,6 @@ jobs:
         id: get_tag
         run: |
           git fetch --tags
-          git describe --tags --abbrev=0 > $GITHUB_ENV/LATEST_TAG
+          git describe --tags --abbrev=0 >> $GITHUB_ENV/LATEST_TAG
       - name: Set output
         run: echo "latest_tag=$(cat $GITHUB_ENV/LATEST_TAG)" >> $GITHUB_ENV
