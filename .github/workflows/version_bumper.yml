@@ -47,6 +47,21 @@ jobs:
           node-version: 12
       - name: Install dependencies
         run: npm install
+      - name: Get latest tag
+        id: get_tag
+        run: |
+          git fetch --tags
+          git describe --tags --abbrev=0 > ./versioning-rules/version.json
+      - name: print tag
+        run: |
+          cat ./versioning-rules/version.json
+      - name: update version file
+        run: |
+          sed 's/^/{ "version": "/' ./versioning-rules/version.json
+          sed 's/$/" } /' ./versioning-rules/version.json
+      - name: print tag
+        run: |
+            cat ./versioning-rules/version.json
       - name: clean version file
         run: |
           sed -i 's/-beta//' ./versioning-rules/version.json
