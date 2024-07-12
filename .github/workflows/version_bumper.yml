@@ -17,8 +17,14 @@ jobs:
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
-      - name: update version file
-        run: echo git describe --tags --abbrev=0 > ./versioning-rules/version.json
+      - name: get the latest tag
+        run: |
+          echo "latest_tag = $(git describe --tags --abbrev=0) >> "$GITHUB_ENV"
+      - name : update the version file
+        run: |
+          echo : > ./versioning-rules/version.json
+          echo { version: ${{ env.latest_tag}} } >> ./versioning-rules/version.json
+          echo cat ./versioning-rules/version.json
       - name: print version file content
         run: |
           echo cat ./versioning-rules/version.json
