@@ -12,6 +12,10 @@ jobs:
         id: get_tag
         run: |
           git fetch --tags
-          git describe --tags --abbrev=0 >> ./versioning-rules/version.json
-      - name: Set output
-        run: echo "latest_tag=$(cat $GITHUB_ENV/LATEST_TAG)" >> $GITHUB_ENV
+          git describe --tags --abbrev=0 >> $GITHUB_ENV
+      - name: Write tag to file
+        run: |
+          echo "{\"version\": \"$(cat $GITHUB_ENV)\"}" > version.json
+      - name: print tag
+        run: |
+          cat version.json
