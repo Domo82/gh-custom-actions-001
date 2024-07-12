@@ -14,7 +14,7 @@ on:
           - version-file-setup
 jobs:
   version-file-setup:
-    if: github.event.inputs['Select a job to run'] == 'major-bump'
+    if: github.event.inputs['Select a job to run'] == 'version-file-setup'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
