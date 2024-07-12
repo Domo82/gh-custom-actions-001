@@ -27,8 +27,8 @@ jobs:
         run: npm install
       - name: clean version file
         run: |
-          sed -i 's/-beta//' myfile.txt
-          sed -i 's/-rc//' myfile.txt
+          sed -i 's/-beta//' ./version.json
+          sed -i 's/-rc//' ./version.json
       - name: Bump Versions
         uses: michmich112/version-bumper@master
         with:
