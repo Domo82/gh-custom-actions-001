@@ -12,11 +12,7 @@ jobs:
         id: get_tag
         run: |
           git fetch --tags
-          git describe --tags --abbrev=0 >> $GITHUB_ENV
-      - name: Write tag to file
-        run: |
-          echo touch test.json
-          echo "{\"version\": \"$(cat $GITHUB_ENV)\"}" > test.json
+          git describe --tags --abbrev=0 > test.json
       - name: print tag
         run: |
           cat test.json
