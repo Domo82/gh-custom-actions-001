@@ -3,8 +3,8 @@
     "username": "Domo82",
     "email": "Domo@82.id",
     "schemeDefinition": "major.minor.build[.patch]",
-    "versionFile": "./version.json",
-    "files": ["./version.json"],
+    "versionFile": "./versioning-rules/version.json",
+    "files": ["./versioning-rules/version.json"],
     "rules": [
       {
         "trigger": "manual",
