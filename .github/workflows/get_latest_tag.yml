@@ -15,7 +15,8 @@ jobs:
           git describe --tags --abbrev=0 >> $GITHUB_ENV
       - name: Write tag to file
         run: |
-          echo "{\"version\": \"$(cat $GITHUB_ENV)\"}" > version.json
+          echo touch test.json
+          echo "{\"version\": \"$(cat $GITHUB_ENV)\"}" > test.json
       - name: print tag
         run: |
-          cat version.json
+          cat test.json
