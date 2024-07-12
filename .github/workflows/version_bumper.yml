@@ -12,10 +12,6 @@ on:
           - major-bump-and-tag-beta
           - major-bump-and-tag-release-candidate
 jobs:
-  github-example-tags:
-    runs-on: ubuntu-latest
-    steps:
-
   major-bump:
     if: github.event.inputs['Select a job to run'] == 'major-bump'
     permissions: write-all
