@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 50
       - name: Create version file
         run: |
-          echo git describe --tags --abbrev=0 > ./versioning-rules/version.json
+          git describe --tags --abbrev=0 > ./versioning-rules/version.json
           echo "{\"version\": \"$latest_tag\"}" > ./versioning-rules/version.json
   major-bump:
     if: github.event.inputs['Select a job to run'] == 'major-bump'
