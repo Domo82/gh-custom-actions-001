@@ -27,8 +27,8 @@ jobs:
         run: npm install
       - name: get the latest tag
         run: |
-          echo : > ./versioning-rules/version.json
-          echo "latest_tag = $(git describe --tags --abbrev=0)" > ./versioning-rules/version.json
+          echo rm -f ./versioning-rules/version.json
+          echo git describe --tags --abbrev=0 > ./versioning-rules/version.json
       - name : update the version file
         run: |
           echo sed 's/^/{ "version": "}'
